@@ -232,7 +232,7 @@ if(ENABLE_GUI OR ENABLE_CLI)
 
         set(FORCE_VENDORED_ZLIB     ON)
         set(FORCE_VENDORED_PNG      ON)
-        set(FORCE_VENDORED_Freetype ON)
+        set(FORCE_VENDORED_Freetype OFF)
 
         find_vendored_package(ZLIB zlib
             ZLIB_LIBRARY            zlibstatic
