@@ -232,7 +232,7 @@ if(ENABLE_GUI OR ENABLE_CLI)
 
         set(FORCE_VENDORED_ZLIB     ON)
         set(FORCE_VENDORED_PNG      ON)
-        set(FORCE_VENDORED_Freetype OFF)
+        set(FORCE_VENDORED_Freetype ON)
 
         find_vendored_package(ZLIB zlib
             ZLIB_LIBRARY            zlibstatic
@@ -251,13 +251,14 @@ if(ENABLE_GUI OR ENABLE_CLI)
             PNG_PNG_INCLUDE_DIR     ${CMAKE_SOURCE_DIR}/extlib/libpng)
         list(APPEND PNG_PNG_INCLUDE_DIR ${CMAKE_BINARY_DIR}/extlib/libpng)
 
-        find_vendored_package(Freetype freetype
-            WITH_ZLIB               OFF
-            WITH_BZip2              OFF
-            WITH_PNG                OFF
-            WITH_HarfBuzz           OFF
-            FREETYPE_LIBRARY        freetype
-            FREETYPE_INCLUDE_DIRS   ${CMAKE_SOURCE_DIR}/extlib/freetype/include)
+        find_package(Freetype REQUIRED)
+        # find_vendored_package(Freetype freetype
+        #     WITH_ZLIB               OFF
+        #     WITH_BZip2              OFF
+        #     WITH_PNG                OFF
+        #     WITH_HarfBuzz           OFF
+        #     FREETYPE_LIBRARY        freetype
+        #     FREETYPE_INCLUDE_DIRS   ${CMAKE_SOURCE_DIR}/extlib/freetype/include)
 
         message(STATUS "Using in-tree pixman")
         set(PIXMAN_FOUND            YES)
